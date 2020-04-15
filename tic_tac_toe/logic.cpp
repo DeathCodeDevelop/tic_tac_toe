@@ -1,4 +1,4 @@
-
+#include "logic.h"
 
 bool Logic(char** map, bool crossTurn)
 {
