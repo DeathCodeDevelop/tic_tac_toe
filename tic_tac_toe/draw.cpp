@@ -47,8 +47,6 @@ void Draw(char** newMap)
 	system("cls");
 	system("color 0");
 
-	newMap[0][0] = 'x';
-
 	for (size_t i = 0; i < 15; i++)
 	{
 		if (i == 0 || i == 5 || i == 10)

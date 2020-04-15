@@ -18,10 +18,6 @@ int main()
 	int rows = 3, cols = 3;
 	char** map = CreatenewMap(rows, cols);
 
-	map[0][0] = 'x';
-	map[1][1] = 'x';
-	map[2][2] = 'x';
-
 	if (!menu.playWithComputer) 
 	{
 		bool gameWork = true;
@@ -31,8 +27,27 @@ int main()
 		do
 		{
 			Draw(map);
-			Input(map);
+			
+			cordinats = Input(map);
+
+			if (crossTurn)
+			{
+				map[cordinats.y][cordinats.x] = 'x';
+				
+			}
+			else
+			{
+				map[cordinats.y][cordinats.x] = 'o';
+				
+			}
+
+			gameWork = Logic(map, crossTurn);
+
+			crossTurn = !crossTurn;
+			
 		} while (gameWork);
+
+		Draw(map);
 	}
 	else if (menu.playWithComputer) 
 	{

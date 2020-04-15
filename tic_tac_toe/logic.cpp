@@ -92,7 +92,7 @@ bool DiagonalsCheck(char** map, char symbol)
 	{
 		return true;
 	}
-
+	
 	count = 0;
 
 	for (size_t i = 0; i < 3; i++)
