@@ -24,11 +24,12 @@ int main()
 	if (!menu.playWithComputer) 
 	{
 		bool crossTurn = true;
+		bool gameWork = true;
 
 		do 
 		{
 			
-		} while ();
+		} while (gameWork);
 	}
 	else if (menu.playWithComputer) 
 	{
