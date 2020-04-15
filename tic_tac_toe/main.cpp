@@ -1,6 +1,7 @@
 #include <iostream>
 #include "menu.h"
 #include "draw.h"
+#include "logic.h"
 using namespace std;
 
 char** CreatenewMap(int rows, int cols);
@@ -16,9 +17,14 @@ int main()
 	int rows = 3, cols = 3;
 	char** map = CreatenewMap(rows, cols);
 
+	map[0][0] = 'x';
+	map[1][1] = 'x';
+	map[2][2] = 'x';
+
 	if (!menu.playWithComputer) 
 	{
 		Draw(map);
+		cout << Logic(map, 0) << endl;
 	}
 	else if (menu.playWithComputer) 
 	{
