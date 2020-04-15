@@ -1,0 +1,8 @@
+# ignore .vs
+.vs/
+# ingore Debag
+Debug/
+# ignore temp
+temp/
+# ignore Debag in Folder tic_tac_toe
+tic_tac_toe/Debug/
