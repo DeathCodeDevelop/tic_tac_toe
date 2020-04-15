@@ -14,11 +14,11 @@ int main()
 	cout << "you first = > " << menu.youFirstPlayer << endl;
 
 	int rows = 3, cols = 3;
-	char** newMap = CreatenewMap(rows, cols);
+	char** map = CreatenewMap(rows, cols);
 
 	if (!menu.playWithComputer) 
 	{
-		
+		Draw(map);
 	}
 	else if (menu.playWithComputer) 
 	{
