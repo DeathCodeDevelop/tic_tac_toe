@@ -23,8 +23,12 @@ int main()
 
 	if (!menu.playWithComputer) 
 	{
-		Draw(map);
-		cout << Logic(map, 0) << endl;
+		bool crossTurn = true;
+
+		do 
+		{
+			
+		} while ();
 	}
 	else if (menu.playWithComputer) 
 	{
