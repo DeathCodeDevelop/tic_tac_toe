@@ -10,7 +10,7 @@ Cordinats Input(char** map)
 		cin >> cordinats.x;
 		cout << "enter y = > ";
 		cin >> cordinats.y;
-	} while (THE_SELL_IS_NOT_EMPTY || X_IS_OUT_OF_BORDERS || Y_IS_OUT_OF_BORDERS);
+	} while (map[cordinats.x - 1][cordinats.y - 1] != ' ' || X_IS_OUT_OF_BORDERS || Y_IS_OUT_OF_BORDERS);
 
 	return cordinats;
 }

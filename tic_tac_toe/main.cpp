@@ -2,6 +2,7 @@
 #include "menu.h"
 #include "draw.h"
 #include "logic.h"
+#include "input.h"
 using namespace std;
 
 char** CreatenewMap(int rows, int cols);
@@ -23,7 +24,15 @@ int main()
 
 	if (!menu.playWithComputer) 
 	{
-		
+		bool gameWork = true;
+		bool crossTurn = true;
+		Cordinats cordinats;
+
+		do
+		{
+			Draw(map);
+			Input(map);
+		} while (gameWork);
 	}
 	else if (menu.playWithComputer) 
 	{

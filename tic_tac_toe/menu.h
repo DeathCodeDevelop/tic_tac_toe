@@ -18,5 +18,5 @@ struct Menu
 Menu ShowMenu();
 void ScreenImage(int cursorPosition, char** text, size_t size);
 void ShowSpace(int count);
-void Input(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, int menuPosistion);
+void MenuInput(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, int menuPosistion);
 void MakeStructure(int* arr, Menu& menu);

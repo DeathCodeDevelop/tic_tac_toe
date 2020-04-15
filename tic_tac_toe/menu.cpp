@@ -67,7 +67,7 @@ Menu ShowMenu()
 		{
 			if (_kbhit())
 			{
-				Input(cursorPosition, menuWork, stringCount[i], returnMenu, i);
+				MenuInput(cursorPosition, menuWork, stringCount[i], returnMenu, i);
 				ScreenImage(cursorPosition, text, stringCount[i]);
 			}
 		} while (menuWork);
@@ -165,7 +165,7 @@ void ShowSpace(int count)
 	}
 }
 
-void Input(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, int menuPosition)
+void MenuInput(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, int menuPosition)
 {
 	switch (_getch())
 	{
