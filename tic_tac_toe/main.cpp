@@ -1,8 +1,9 @@
 #include <iostream>
 #include "menu.h"
+#include "draw.h"
 using namespace std;
 
-char** CreateMap(int rows, int cols);
+char** CreatenewMap(int rows, int cols);
 
 int main() 
 {
@@ -13,7 +14,7 @@ int main()
 	cout << "you first = > " << menu.youFirstPlayer << endl;
 
 	int rows = 3, cols = 3;
-	char** map = CreateMap(rows, cols);
+	char** newMap = CreatenewMap(rows, cols);
 
 	if (!menu.playWithComputer) 
 	{
@@ -27,14 +28,14 @@ int main()
 	return 0;
 }
 
-char** CreateMap(int rows, int cols)
+char** CreatenewMap(int rows, int cols)
 {
-	char** map = new char* [rows];
+	char** newMap = new char* [rows];
 
 	for (int i = 0; i < rows; i++)
 	{
-		map[i] = new char[cols];
+		newMap[i] = new char[cols];
 	}
 
-	return map;
+	return newMap;
 }

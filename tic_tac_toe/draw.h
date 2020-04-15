@@ -22,4 +22,4 @@ enum ConsoleColor {
 	White = 15
 };
 
-void Draw(const char* NULL_IMAGE, const char* CROSS_IMAGE, char* newMap);
+void Draw(char** newMap);
