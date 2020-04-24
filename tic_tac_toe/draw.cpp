@@ -1,7 +1,5 @@
 #include <iostream>
 #include "draw.h"
-#include <windows.h>
-using namespace std;
 
 enum ConsoleColor {
 	Black = 0,
@@ -22,10 +20,10 @@ enum ConsoleColor {
 	White = 15
 };
 
-void Draw(char** newMap)
+void Draw(char** newMap, Cursor& cursor)
 {
 	const int SIZE = 5;
-	char CROSS_IMAGE[SIZE][SIZE] = 
+	char CROSS_IMAGE[SIZE][SIZE] =
 	{
 		{ '*', ' ', ' ', ' ', '*' },
 		{ ' ', '*', ' ', '*', ' ' },
@@ -40,6 +38,14 @@ void Draw(char** newMap)
 		{ '*', ' ', ' ', ' ', '*' },
 		{ '*', ' ', ' ', ' ', '*' },
 		{ ' ', '*', '*', '*', ' ' }
+	};
+	char CURSOR_IMAGE[SIZE][SIZE] =
+	{
+		{ '*', '*', '*', ' ', ' ' },
+		{ '*', '*', ' ', ' ', ' ' },
+		{ '*', ' ', ' ', ' ', ' ' },
+		{ ' ', ' ', ' ', ' ', ' ' },
+		{ ' ', ' ', ' ', ' ', ' ' }
 	};
 
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -67,7 +73,12 @@ void Draw(char** newMap)
 			}
 			if ((i >= 0 && i < 5) && (j >= 0 && j < 5))
 			{
-				if (newMap[0][0] == 'x')
+				if (cursor.x == 0 && cursor.y == 0)
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)(Green));
+					cout << " " << CURSOR_IMAGE[i][j];
+				}
+				else if (newMap[0][0] == 'x')
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)(Red));
 					cout << " " << CROSS_IMAGE[i][j];
@@ -84,7 +95,12 @@ void Draw(char** newMap)
 			}
 			else if ((i >= 0 && i < 5) && (j >= 5 && j < 10))
 			{
-				if (newMap[0][1] == 'x')
+				if (cursor.x == 1 && cursor.y == 0)
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)(Green));
+					cout << " " << CURSOR_IMAGE[i][j - 5];
+				}
+				else if (newMap[0][1] == 'x')
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)(Red));
 					cout << " " << CROSS_IMAGE[i][j - 5];
@@ -101,7 +117,12 @@ void Draw(char** newMap)
 			}
 			else if ((i >= 0 && i < 5) && (j >= 10 && j < 15))
 			{
-				if (newMap[0][2] == 'x')
+				if (cursor.x == 2 && cursor.y == 0)
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)(Green));
+					cout << " " << CURSOR_IMAGE[i][j - 10];
+				}
+				else if (newMap[0][2] == 'x')
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)(Red));
 					cout << " " << CROSS_IMAGE[i][j - 10];
@@ -118,7 +139,12 @@ void Draw(char** newMap)
 			}
 			else if ((i >= 5 && i < 10) && (j >= 0 && j < 5))
 			{
-				if (newMap[1][0] == 'x')
+				if (cursor.x == 0 && cursor.y == 1)
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)(Green));
+					cout << " " << CURSOR_IMAGE[i - 5][j];
+				}
+				else if (newMap[1][0] == 'x')
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)(Red));
 					cout << " " << CROSS_IMAGE[i - 5][j];
@@ -135,7 +161,12 @@ void Draw(char** newMap)
 			}
 			else if ((i >= 5 && i < 10) && (j >= 5 && j < 10))
 			{
-				if (newMap[1][1] == 'x')
+				if (cursor.x == 1 && cursor.y == 1)
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)(Green));
+					cout << " " << CURSOR_IMAGE[i - 5][j - 5];
+				}
+				else if (newMap[1][1] == 'x')
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)(Red));
 					cout << " " << CROSS_IMAGE[i - 5][j - 5];
@@ -152,7 +183,12 @@ void Draw(char** newMap)
 			}
 			else if ((i >= 5 && i < 10) && (j >= 10 && j < 15))
 			{
-				if (newMap[1][2] == 'x')
+				if (cursor.x == 1 && cursor.y == 2)
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)(Green));
+					cout << " " << CURSOR_IMAGE[i - 5][j - 10];
+				}
+				else if (newMap[1][2] == 'x')
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)(Red));
 					cout << " " << CROSS_IMAGE[i - 5][j - 10];
@@ -169,7 +205,12 @@ void Draw(char** newMap)
 			}
 			else if ((i >= 10 && i < 15) && (j >= 0 && j < 5))
 			{
-				if (newMap[2][0] == 'x')
+				if (cursor.x == 2 && cursor.y == 0)
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)(Green));
+					cout << " " << CURSOR_IMAGE[i - 10][j];
+				}
+				else if (newMap[2][0] == 'x')
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)(Red));
 					cout << " " << CROSS_IMAGE[i - 10][j];
@@ -186,7 +227,12 @@ void Draw(char** newMap)
 			}
 			else if ((i >= 10 && i < 15) && (j >= 5 && j < 10))
 			{
-				if (newMap[2][1] == 'x')
+				if (cursor.x == 2 && cursor.y == 1)
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)(Green));
+					cout << " " << CURSOR_IMAGE[i - 10][j - 5];
+				}
+				else if (newMap[2][1] == 'x')
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)(Red));
 					cout << " " << CROSS_IMAGE[i - 10][j - 5];
@@ -203,6 +249,11 @@ void Draw(char** newMap)
 			}
 			else if ((i >= 10 && i < 15) && (j >= 10 && j < 15))
 			{
+				if (cursor.x == 2 && cursor.y == 2)
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)(Green));
+					cout << " " << CURSOR_IMAGE[i - 10][j - 10];
+				}
 				if (newMap[2][2] == 'x')
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)(Red));

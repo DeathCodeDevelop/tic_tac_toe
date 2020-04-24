@@ -3,4 +3,10 @@
 #include <Windows.h>
 using namespace std;
 
-void Draw(char** newMap);
+struct Cursor
+{
+	int x;
+	int y;
+};
+
+void Draw(char** newMap, Cursor& cursor);
