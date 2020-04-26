@@ -11,13 +11,18 @@ int main()
 {
 	Menu menu = ShowMenu();
 
-	cout << "play with computer = > " << menu.playWithComputer << endl;
-	cout << "difficalty = > " << menu.difficulty << endl;
-	cout << "you first = > " << menu.youFirstPlayer << endl;
+	//cout << "play with computer = > " << menu.playWithComputer << endl;
+	//cout << "difficalty = > " << menu.difficulty << endl;
+	//cout << "you first = > " << menu.youFirstPlayer << endl;
 
 	int rows = 3, cols = 3;
 	char** map = CreatenewMap(rows, cols);
 	int count = 0;
+
+	//menu.exitTrue = true;
+
+	if (menu.exitTrue)
+		return 0;
 
 	if (!menu.playWithComputer) 
 	{
@@ -46,7 +51,7 @@ int main()
 		Draw(map, cursor, crossTurn);
 
 		if (noBodyWon) 
-			cout << "nobody won!!!\n";
+			cout << " nobody won!!!\n";
 		else if (!crossTurn)
 			cout << " x win!!!\n";
 		else

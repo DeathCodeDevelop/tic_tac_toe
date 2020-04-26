@@ -49,6 +49,7 @@ Menu ShowMenu()
 	int temp[3] = { 0,1,2 };
 	int i = 0;
 	bool returnMenu;
+	bool gameWork = true;
 
 	do
 	{
@@ -67,10 +68,13 @@ Menu ShowMenu()
 		{
 			if (_kbhit())
 			{
-				MenuInput(cursorPosition, menuWork, stringCount[i], returnMenu, i);
+				MenuInput(cursorPosition, menuWork, stringCount[i], returnMenu, i, gameWork);
 				ScreenImage(cursorPosition, text, stringCount[i]);
 			}
 		} while (menuWork);
+
+		if (!gameWork)
+			break;
 
 		temp[i] = cursorPosition;
 
@@ -87,7 +91,8 @@ Menu ShowMenu()
 			i--;
 	} while (i < 3);
 
-	MakeStructure(temp, menu);
+	if (gameWork)
+		MakeStructure(temp, menu);
 
 	return menu;
 }
@@ -165,7 +170,7 @@ void ShowSpace(int count)
 	}
 }
 
-void MenuInput(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, int menuPosition)
+void MenuInput(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, int menuPosition, bool& gameWork)
 {
 	switch (_getch())
 	{
@@ -183,15 +188,20 @@ void MenuInput(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, 
 
 		break;
 	case 'f':case 'F':case BUTTON_ENTER:
-		if (cursorPosition == size - 1 && menuPosition != 0)
+		if (cursorPosition == size - 1 && menuPosition == 0)
 		{
+			gameWork = false;
+			menuWork = false;
+		}
+		else if (cursorPosition == size - 1 && menuPosition != 0)
+		{
+			
 			returnMenu = true;
 			menuWork = false;
-		}
+		}	
 		else
-		{
 			menuWork = false;
-		}
+
 		break;
 	case BUTTON_ESC:
 		if (cursorPosition == size - 1 && menuPosition == 0)
@@ -205,6 +215,9 @@ void MenuInput(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, 
 
 void MakeStructure(int* arr, Menu& menu)
 {
+	if (arr[0] != 2)
+		menu.exitTrue = false;
+	
 	if (arr[0] == 1)
 		menu.playWithComputer = true;
 	else

@@ -10,13 +10,14 @@ using namespace std;
 
 struct Menu
 {
-	bool playWithComputer;
-	int difficulty; // 0 - low, 1 - medium, 2 - hard
-	bool youFirstPlayer;
+	bool exitTrue = true;
+	bool playWithComputer = 0;
+	int difficulty = 0; // 0 - low, 1 - medium, 2 - hard
+	bool youFirstPlayer = 0;
 };
 
 Menu ShowMenu();
 void ScreenImage(int cursorPosition, char** text, size_t size);
 void ShowSpace(int count);
-void MenuInput(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, int menuPosistion);
+void MenuInput(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, int menuPosistion, bool& gameWork);
 void MakeStructure(int* arr, Menu& menu);
