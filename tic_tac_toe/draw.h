@@ -9,4 +9,4 @@ struct Cursor
 	int y;
 };
 
-void Draw(char** newMap, Cursor& cursor);
+void Draw(char** newMap, Cursor& cursor, bool crossTurn);

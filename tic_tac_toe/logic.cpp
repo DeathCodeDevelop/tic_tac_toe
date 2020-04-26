@@ -1,8 +1,22 @@
 #include "logic.h"
 
-bool Logic(char** map, bool crossTurn)
+int Logic(char** map, bool crossTurn)
 {
 	char symbol;
+	int count = 0;
+	const int SIZE = 3;
+
+	for (int i = 0; i < SIZE; i++) 
+	{
+		for (int j = 0; j < SIZE; j++)
+		{
+			if (map[i][j] == 'x' || map[i][j] == 'o')
+				count++;
+		}
+	}
+
+	if (count == SIZE * SIZE) 
+		return 2;
 
 	if (crossTurn) 
 		symbol = 'x';
@@ -11,18 +25,18 @@ bool Logic(char** map, bool crossTurn)
 	
 	if (GorizontalCheck(map, symbol))
 	{
-		return false;
+		return 0;
 	}
 	else if (VerticalCheck(map, symbol))
 	{
-		return false;
+		return 0;
 	}
 	else if (DiagonalsCheck(map, symbol))
 	{
-		return false;
+		return 0;
 	}
 
-	return true;
+	return 1;
 }
 
 bool GorizontalCheck(char** map, char symbol)

@@ -17,37 +17,40 @@ int main()
 
 	int rows = 3, cols = 3;
 	char** map = CreatenewMap(rows, cols);
+	int count = 0;
 
 	if (!menu.playWithComputer) 
 	{
 		bool gameWork = true;
 		bool crossTurn = true;
-		Cordinats cordinats;
-
+		Cursor cursor = { -1,-1 };
+		bool noBodyWon = false;
+		
 		do
 		{
-			Draw(map);
-			
-			cordinats = Input(map);
+			count++;
 
-			if (crossTurn)
-			{
-				map[cordinats.y][cordinats.x] = 'x';
-				
-			}
-			else
-			{
-				map[cordinats.y][cordinats.x] = 'o';
-				
-			}
-
+			Draw(map, cursor, crossTurn);
+			Input(map, crossTurn);
 			gameWork = Logic(map, crossTurn);
 
+			if (count == 9 && Logic(map, crossTurn))
+			{
+				noBodyWon = true;
+				break;
+			}
+
 			crossTurn = !crossTurn;
-			
 		} while (gameWork);
 
-		Draw(map);
+		Draw(map, cursor, crossTurn);
+
+		if (noBodyWon) 
+			cout << "nobody won!!!\n";
+		else if (!crossTurn)
+			cout << " x win!!!\n";
+		else
+			cout << " o win!!!\n";
 	}
 	else if (menu.playWithComputer) 
 	{
