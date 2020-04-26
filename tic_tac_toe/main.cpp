@@ -3,6 +3,7 @@
 #include "draw.h"
 #include "logic.h"
 #include "input.h"
+#include "low.h"
 using namespace std;
 
 char** CreatenewMap(int rows, int cols);
@@ -18,8 +19,6 @@ int main()
 	int rows = 3, cols = 3;
 	char** map = CreatenewMap(rows, cols);
 	int count = 0;
-
-	//menu.exitTrue = true;
 
 	if (menu.exitTrue)
 		return 0;
@@ -59,7 +58,62 @@ int main()
 	}
 	else if (menu.playWithComputer) 
 	{
-		
+		bool gameWork = true;
+		bool crossTurn = true;
+		Cursor cursor = { -1,-1 };
+		bool noBodyWon = false;
+		Cordinats cordinats;
+
+		do
+		{
+			count++;
+
+			Draw(map, cursor, crossTurn);
+			
+			if (menu.youFirstPlayer) 
+			{
+				if (crossTurn)
+				{
+					Input(map, true);
+				}
+				else
+				{
+					cordinats = Low(map);
+					map[cordinats.y][cordinats.x] = 'o';
+				}
+			}
+			else 
+			{
+				if (crossTurn)
+				{
+					cordinats = Low(map);
+					map[cordinats.y][cordinats.x] = 'x';
+				}
+				else
+				{	
+					Input(map, false);
+				}
+			}
+			
+			gameWork = Logic(map, crossTurn);
+
+			if (count == 9 && Logic(map, crossTurn))
+			{
+				noBodyWon = true;
+				break;
+			}
+
+			crossTurn = !crossTurn;
+		} while (gameWork);
+
+		Draw(map, cursor, crossTurn);
+
+		if (noBodyWon)
+			cout << " nobody won!!!\n";
+		else if (!crossTurn)
+			cout << " x win!!!\n";
+		else
+			cout << " o win!!!\n";
 	}
 
 	return 0;
