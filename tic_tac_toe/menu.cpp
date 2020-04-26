@@ -195,7 +195,6 @@ void MenuInput(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, 
 		}
 		else if (cursorPosition == size - 1 && menuPosition != 0)
 		{
-			
 			returnMenu = true;
 			menuWork = false;
 		}	
@@ -204,7 +203,12 @@ void MenuInput(int& cursorPosition, bool& menuWork, int size, bool& returnMenu, 
 
 		break;
 	case BUTTON_ESC:
-		if (cursorPosition == size - 1 && menuPosition == 0)
+		if (menuPosition == 0)
+		{
+			gameWork = false;
+			menuWork = false;
+		}
+		else if (menuPosition != 0)
 		{
 			returnMenu = true;
 			menuWork = false;
@@ -225,7 +229,7 @@ void MakeStructure(int* arr, Menu& menu)
 
 	menu.difficulty = arr[1];
 
-	if (arr[3] == 1)
+	if (arr[2] == 0)
 		menu.youFirstPlayer = true;
 	else
 		menu.youFirstPlayer = false;
