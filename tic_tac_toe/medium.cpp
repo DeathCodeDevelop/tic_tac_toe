@@ -21,9 +21,7 @@ Cordinats Medium(char** map, bool playerFirst)
 
 	Cordinats cordinats;
 
-	for (int i = 0; i < size; i++)
-		for (int j = 0; j < size; j++)
-			newMap[i][j] = map[i][j];
+	CopyMap(map, newMap, size);
 
 	do
 	{
