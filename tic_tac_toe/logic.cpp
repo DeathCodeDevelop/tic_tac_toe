@@ -1,6 +1,6 @@
 #include "logic.h"
 
-int Logic(char** map, bool crossTurn)
+int Logic(char** map, bool crossColorTurn)
 {
 	char symbol;
 	int count = 0;
@@ -11,7 +11,7 @@ int Logic(char** map, bool crossTurn)
 			if (map[i][j] == 'x' || map[i][j] == 'o')
 				count++;
 	
-	if (crossTurn) 
+	if (crossColorTurn) 
 		symbol = 'x';
 	else
 		symbol = 'o';	

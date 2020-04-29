@@ -11,4 +11,4 @@ using namespace std;
 #define BUTTON_URROW_DOWN 80
 #define BUTTON_ESC 27
 
-Cursor Input(char** map, bool crossTurn);
+Cursor Input(char** map, bool crossColorTurn);

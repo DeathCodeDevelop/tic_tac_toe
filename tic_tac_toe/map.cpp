@@ -1,4 +1,4 @@
-char** CreatenewMap(int rows, int cols)
+char** CreateNewMap(int rows, int cols)
 {
 	char** newMap = new char* [rows];
 
@@ -15,4 +15,13 @@ void CopyMap(char** map, char** newMap, size_t size)
 	for (int i = 0; i < size; i++)
 		for (int j = 0; j < size; j++)
 			newMap[i][j] = map[i][j];
+}
+
+void DeleteMap(char** map, size_t size) 
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		delete[] map[i];
+	}
+	delete[] map;
 }

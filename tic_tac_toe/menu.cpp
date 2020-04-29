@@ -6,7 +6,7 @@ Menu ShowMenu()
 	bool menuWork = true;
 	Menu menu;
 
-	const int MENU_COUNT = 3;
+	const int MENU_COUNT = 4;
 	const int STRING_COUNT = 5;
 	const int CHAR_COUNT = 23;
 
@@ -15,6 +15,7 @@ Menu ShowMenu()
 		{
 			"play with friend",
 			"play with computer",
+			"options",
 			"exit"
 		},
 		{
@@ -28,9 +29,15 @@ Menu ShowMenu()
 			"bot first",
 			"return",
 		},
+		{
+			"cursorColor",
+			"crossColor",
+			"nullColor",
+			"return"
+		},
 	};
 
-	int stringCount[3] = { 0, 0, 0 };
+	int stringCount[4] = { 0, 0, 0 , 0};
 
 	for (int i = 0; i < MENU_COUNT; i++)
 	{
@@ -46,7 +53,7 @@ Menu ShowMenu()
 
 	size_t size = 3;
 	char** text = new char* [size];
-	int temp[3] = { 0,1,2 };
+	int temp[4] = { 0,1,2,3 };
 	int i = 0;
 	bool returnMenu;
 	bool gameWork = true;
@@ -89,7 +96,13 @@ Menu ShowMenu()
 			i++;
 		else 
 			i--;
-	} while (i < 3);
+	} while (i < 4);
+
+	/*do 
+	{
+	
+	}
+	while ();*/
 
 	if (gameWork)
 		MakeStructure(temp, menu);

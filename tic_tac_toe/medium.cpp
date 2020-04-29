@@ -17,7 +17,7 @@ Cordinats Medium(char** map, bool playerFirst)
 	}
 
 	int size = 3;
-	char** newMap = CreatenewMap(size, size);
+	char** newMap = CreateNewMap(size, size);
 
 	Cordinats cordinats;
 
