@@ -7,17 +7,10 @@ int Logic(char** map, bool crossTurn)
 	const int SIZE = 3;
 
 	for (int i = 0; i < SIZE; i++) 
-	{
 		for (int j = 0; j < SIZE; j++)
-		{
 			if (map[i][j] == 'x' || map[i][j] == 'o')
 				count++;
-		}
-	}
-
-	if (count == SIZE * SIZE) 
-		return 2;
-
+	
 	if (crossTurn) 
 		symbol = 'x';
 	else
@@ -25,18 +18,21 @@ int Logic(char** map, bool crossTurn)
 	
 	if (GorizontalCheck(map, symbol))
 	{
-		return 0;
+		return WIN;
 	}
 	else if (VerticalCheck(map, symbol))
 	{
-		return 0;
+		return WIN;
 	}
 	else if (DiagonalsCheck(map, symbol))
 	{
-		return 0;
+		return WIN;
 	}
 
-	return 1;
+	if (count == SIZE * SIZE)
+		return NOBODY_WON;
+
+	return NONE;
 }
 
 bool GorizontalCheck(char** map, char symbol)

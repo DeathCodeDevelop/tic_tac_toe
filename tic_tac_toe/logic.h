@@ -1,7 +1,7 @@
 #pragma once
 
-#define WIN 1
-#define NONE 0
+#define WIN 0
+#define NONE 1
 #define NOBODY_WON 2
 
 int Logic(char** map, bool crossTurn);
