@@ -2,8 +2,6 @@
 
 Cordinats Medium(char** map, bool playerFirst)
 {
-	srand(time(nullptr));
-
 	char symbol;
 	char mySymbol;
 
@@ -38,16 +36,4 @@ Cordinats Medium(char** map, bool playerFirst)
 	} while (Logic(newMap, playerFirst) != 0);
 
 	return cordinats;
-}
-
-char** CreatenewMap(int rows, int cols)
-{
-	char** newMap = new char* [rows];
-
-	for (int i = 0; i < rows; i++)
-	{
-		newMap[i] = new char[cols];
-	}
-
-	return newMap;
 }

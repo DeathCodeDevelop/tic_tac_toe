@@ -4,11 +4,13 @@
 #include "logic.h"
 #include "input.h"
 #include "low.h"
+#include "medium.h"
+#include "map.h"
 using namespace std;
 
 char** CreatenewMap(int rows, int cols);
 
-int main() 
+int main()
 {
 	Menu menu = ShowMenu();
 
@@ -23,13 +25,13 @@ int main()
 	if (menu.exitTrue)
 		return 0;
 
-	if (!menu.playWithComputer) 
+	if (!menu.playWithComputer)
 	{
 		bool gameWork = true;
 		bool crossTurn = true;
 		Cursor cursor = { -1,-1 };
 		bool noBodyWon = false;
-		
+
 		do
 		{
 			count++;
@@ -49,14 +51,14 @@ int main()
 
 		Draw(map, cursor, crossTurn);
 
-		if (noBodyWon) 
+		if (noBodyWon)
 			cout << " nobody won!!!\n";
 		else if (!crossTurn)
 			cout << " x win!!!\n";
 		else
 			cout << " o win!!!\n";
 	}
-	else if (menu.playWithComputer) 
+	else if (menu.playWithComputer)
 	{
 		bool gameWork = true;
 		bool crossTurn = true;
@@ -69,8 +71,8 @@ int main()
 			count++;
 
 			Draw(map, cursor, crossTurn);
-			
-			if (menu.youFirstPlayer) 
+
+			if (menu.youFirstPlayer)
 			{
 				if (crossTurn)
 				{
@@ -78,23 +80,43 @@ int main()
 				}
 				else
 				{
-					cordinats = Low(map);
+					switch (menu.difficulty)
+					{
+					case 0:
+						cordinats = Low(map);
+						break;
+					case 1:
+						cordinats = Medium(map, true);
+						break;
+					case 2:
+						break;
+					}
 					map[cordinats.y][cordinats.x] = 'o';
 				}
 			}
-			else 
+			else
 			{
 				if (crossTurn)
 				{
-					cordinats = Low(map);
+					switch (menu.difficulty)
+					{
+					case 0:
+						cordinats = Low(map);
+						break;
+					case 1:
+						cordinats = Medium(map, false);
+						break;
+					case 2:
+						break;
+					}
 					map[cordinats.y][cordinats.x] = 'x';
 				}
 				else
-				{	
+				{
 					Input(map, false);
 				}
 			}
-			
+
 			gameWork = Logic(map, crossTurn);
 
 			if (count == 9 && Logic(map, crossTurn))
@@ -117,16 +139,4 @@ int main()
 	}
 
 	return 0;
-}
-
-char** CreatenewMap(int rows, int cols)
-{
-	char** newMap = new char* [rows];
-
-	for (int i = 0; i < rows; i++)
-	{
-		newMap[i] = new char[cols];
-	}
-
-	return newMap;
 }
