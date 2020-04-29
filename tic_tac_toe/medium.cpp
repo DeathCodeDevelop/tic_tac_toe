@@ -35,7 +35,6 @@ Cordinats Medium(char** map, bool playerFirst)
 		if (Logic(newMap, playerFirst) == NOBODY_WON)
 			break;
 
-		count++;
 	} while (Logic(newMap, playerFirst) != 0);
 
 	return cordinats;
