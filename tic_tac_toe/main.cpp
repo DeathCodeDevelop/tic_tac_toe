@@ -13,6 +13,13 @@ char** CreateNewMap(int rows, int cols);
 int main()
 {
 	Menu menu = ShowMenu();
+	
+	//cout << menu.colorData[0] << endl;
+	//cout << menu.colorData[1] << endl;
+	//cout << menu.colorData[2] << endl;
+	//cout << menu.colorData[3] << endl;
+
+	//return 0;
 
 	//cout << "play with computer = > " << menu.playWithComputer << endl;
 	//cout << "difficalty = > " << menu.difficulty << endl;
@@ -36,8 +43,8 @@ int main()
 		{
 			count++;
 
-			Draw(map, cursor, crossColorTurn);
-			Input(map, crossColorTurn);
+			Draw(map, cursor, crossColorTurn, menu.colorData);
+			Input(map, crossColorTurn, menu.colorData);
 			gameWork = Logic(map, crossColorTurn);
 
 			if (count == 9 && Logic(map, crossColorTurn))
@@ -49,7 +56,7 @@ int main()
 			crossColorTurn = !crossColorTurn;
 		} while (gameWork);
 
-		Draw(map, cursor, crossColorTurn);
+		Draw(map, cursor, crossColorTurn, menu.colorData);
 
 		if (noBodyWon)
 			cout << " nobody won!!!\n";
@@ -70,13 +77,13 @@ int main()
 		{
 			count++;
 
-			Draw(map, cursor, crossColorTurn);
+			Draw(map, cursor, crossColorTurn, menu.colorData);
 
 			if (menu.youFirstPlayer)
 			{
 				if (crossColorTurn)
 				{
-					Input(map, true);
+					Input(map, true, menu.colorData);
 				}
 				else
 				{
@@ -113,7 +120,7 @@ int main()
 				}
 				else
 				{
-					Input(map, false);
+					Input(map, false, menu.colorData);
 				}
 			}
 
@@ -128,7 +135,7 @@ int main()
 			crossColorTurn = !crossColorTurn;
 		} while (gameWork);
 
-		Draw(map, cursor, crossColorTurn);
+		Draw(map, cursor, crossColorTurn, menu.colorData);
 
 		if (noBodyWon)
 			cout << " nobody won!!!\n";

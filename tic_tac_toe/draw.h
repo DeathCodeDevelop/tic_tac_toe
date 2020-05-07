@@ -28,4 +28,4 @@ enum ConsoleColor {
 	White = 15
 };
 
-void Draw(char** newMap, Cursor& cursor, bool crossColorTurn);
+void Draw(char** newMap, Cursor& cursor, bool crossColorTurn, int colorData[]);

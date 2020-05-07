@@ -4,7 +4,7 @@
 #define X_IS_OUT_OF_BORDERS (cordinats.x < 0 || cordinats.x > 2)
 #define Y_IS_OUT_OF_BORDERS (cordinats.y < 0 || cordinats.y > 2)
 
-Cursor Input(char** map, bool crossColorTurn)
+Cursor Input(char** map, bool crossColorTurn, int colorData[])
 {
 	Cursor cursor;
 	bool inputWork = true;
@@ -12,7 +12,7 @@ Cursor Input(char** map, bool crossColorTurn)
 	cursor.x = 0;
 	cursor.y = 0;
 
-	Draw(map, cursor, crossColorTurn);
+	Draw(map, cursor, crossColorTurn, colorData);
 
 	do
 	{
@@ -47,12 +47,12 @@ Cursor Input(char** map, bool crossColorTurn)
 				cursor.x = -1;
 				cursor.y = -1;
 
-				Draw(map, cursor, crossColorTurn);
+				Draw(map, cursor, crossColorTurn, colorData);
 				
 				inputWork = false;
 				break;
 			}
-			Draw(map, cursor, crossColorTurn);
+			Draw(map, cursor, crossColorTurn, colorData);
 		}
 	} while(inputWork);
 

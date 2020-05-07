@@ -2,7 +2,7 @@
 #include <ctime>
 #include "draw.h"
 
-void Draw(char** newMap, Cursor& cursor, bool crossTurn)
+void Draw(char** newMap, Cursor& cursor, bool crossTurn, int colorData[])
 {
 	srand(time(nullptr));
 
@@ -37,21 +37,26 @@ void Draw(char** newMap, Cursor& cursor, bool crossTurn)
 	system("cls");
 	system("color 0");
 
-	int borderColor = White;
-	int crossColor = Red;
-	int nullColor = Blue;
-	int cursorColor = Green;
-	const bool EPILEPTIC = false;
-
-	if (EPILEPTIC)
+	int borderColor;
+	int cursorColor;
+	int crossColor;
+	int nullColor;
+	
+	if (colorData[0] >= 16 || colorData[1] >= 16 || colorData[2] >= 16 || colorData[3] >= 16)
 	{
 		borderColor = rand() % 14 + 1;
+		cursorColor = rand() % 14 + 1;
 		crossColor = rand() % 14 + 1;
 		nullColor = rand() % 14 + 1;
-		cursorColor = rand() % 14 + 1;
 	}
-
-
+	else 
+	{
+		borderColor = colorData[0];
+		cursorColor = colorData[1];
+		crossColor = colorData[2];
+		nullColor = colorData[3];
+	}	
+	
 	for (size_t i = 0; i < 15; i++)
 	{
 		if (i == 0 || i == 5 || i == 10)
@@ -124,6 +129,8 @@ void Draw(char** newMap, Cursor& cursor, bool crossTurn)
 		}
 		cout << endl;
 	}
+
+	SetConsoleTextAttribute(hConsole, (WORD)(White));
 
 	if (crossTurn)
 	{
