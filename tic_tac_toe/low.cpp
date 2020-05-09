@@ -2,6 +2,10 @@
 
 Cordinats Low(char** map)
 {
+	/*
+		this function put on random 
+	*/
+
 	srand(time(nullptr));
 	
 	Cordinats cordinats;

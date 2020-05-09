@@ -1,18 +1,13 @@
 #include "input.h"
 
-#define THE_SELL_IS_NOT_EMPTY (map[cordinats.y][cordinats.x] != ' ')
-#define X_IS_OUT_OF_BORDERS (cordinats.x < 0 || cordinats.x > 2)
-#define Y_IS_OUT_OF_BORDERS (cordinats.y < 0 || cordinats.y > 2)
-
-Cursor Input(char** map, bool crossTurn)
+Cursor Input(char** map, bool crossTurn, int colorData[])
 {
-	Cursor cursor;
+	/*
+		this function is a keyboard input
+	*/
+	
+	Cursor cursor = { 0, 0 }; // set default cursor place
 	bool inputWork = true;
-
-	cursor.x = 0;
-	cursor.y = 0;
-
-	Draw(map, cursor, crossTurn);
 
 	do
 	{
@@ -44,15 +39,10 @@ Cursor Input(char** map, bool crossTurn)
 				else
 					map[cursor.y][cursor.x] = 'o';
 
-				cursor.x = -1;
-				cursor.y = -1;
-
-				Draw(map, cursor, crossTurn);
-				
 				inputWork = false;
 				break;
 			}
-			Draw(map, cursor, crossTurn);
+			Draw(map, cursor, crossTurn, colorData);
 		}
 	} while(inputWork);
 

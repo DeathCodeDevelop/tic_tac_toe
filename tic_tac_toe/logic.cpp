@@ -2,45 +2,50 @@
 
 int Logic(char** map, bool crossTurn)
 {
+	/*
+		check whether someone won or no one won
+	*/
+	
 	char symbol;
-	int count = 0;
-	const int SIZE = 3;
+	size_t count = 0;
+	const size_t SIZE = 3;
 
-	for (int i = 0; i < SIZE; i++) 
-	{
-		for (int j = 0; j < SIZE; j++)
-		{
+	for (size_t i = 0; i < SIZE; i++) 
+		for (size_t j = 0; j < SIZE; j++)
 			if (map[i][j] == 'x' || map[i][j] == 'o')
 				count++;
-		}
-	}
-
-	if (count == SIZE * SIZE) 
-		return 2;
-
+	
 	if (crossTurn) 
 		symbol = 'x';
 	else
 		symbol = 'o';	
 	
-	if (GorizontalCheck(map, symbol))
+	if (GorizontalCheck(map, symbol)) // check return data
 	{
-		return 0;
+		return WIN;
 	}
 	else if (VerticalCheck(map, symbol))
 	{
-		return 0;
+		return WIN;
 	}
 	else if (DiagonalsCheck(map, symbol))
 	{
-		return 0;
+		return WIN;
 	}
 
-	return 1;
+	if (count == SIZE * SIZE) // check or nobody won
+		return NOBODY_WON;
+
+	return NONE;
 }
 
 bool GorizontalCheck(char** map, char symbol)
 {
+	/*
+		this function check gorizontal sells
+		x x x
+	*/
+	
 	for (size_t temp = 0; temp < 3; temp++)
 	{
 		int count = 0;
@@ -63,6 +68,13 @@ bool GorizontalCheck(char** map, char symbol)
 
 bool VerticalCheck(char** map, char symbol)
 {
+	/*
+		this function check vertical sells
+		x 
+		x
+		x
+	*/
+
 	for (size_t temp = 0; temp < 3; temp++)
 	{
 		int count = 0;
@@ -86,7 +98,14 @@ bool VerticalCheck(char** map, char symbol)
 
 bool DiagonalsCheck(char** map, char symbol)
 {
-	int count = 0;
+	/*
+		this function check to diagonals sells
+		x   x
+		  x
+		x   x
+	*/
+
+	size_t count = 0;
 
 	for (size_t i = 0; i < 3; i++)
 	{

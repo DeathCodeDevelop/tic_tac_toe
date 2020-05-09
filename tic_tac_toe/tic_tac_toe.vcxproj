@@ -143,6 +143,8 @@
     <ClCompile Include="logic.cpp" />
     <ClCompile Include="low.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
+    <ClCompile Include="medium.cpp" />
     <ClCompile Include="menu.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +152,8 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="logic.h" />
     <ClInclude Include="low.h" />
+    <ClInclude Include="map.h" />
+    <ClInclude Include="medium.h" />
     <ClInclude Include="menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
