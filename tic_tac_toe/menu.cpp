@@ -2,6 +2,10 @@
 
 Menu ShowMenu()
 {
+	/*
+		connects all menus and their functionalities to a heap and
+	*/
+
 	Menu menu;
 
 	//Menu sizes
@@ -138,6 +142,10 @@ Menu ShowMenu()
 
 void ScreenImage(int cursorPosition, MenuItem* text, int size, bool chooseColor)
 {
+	/*
+		this functions show menu
+	*/
+	
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	system("cls");
 	system("color 0");
@@ -245,6 +253,10 @@ void ShowSpace(int count)
 
 char MenuInput(int& cursorPosition, int size, int menuPosition)
 {
+	/*
+		is responsible for the functionality all menus
+	*/
+
 	char answer = ' ';
 
 	switch (_getch())
@@ -270,6 +282,10 @@ char MenuInput(int& cursorPosition, int size, int menuPosition)
 
 void MainMenuFunctions(int& cursorPosition, int& menuPosition, bool& menuWork, char answer, bool& playWithComputer, bool& menuChanged, bool& exitTrue)
 {
+	/*
+		is responsible for the functionality main menu
+	*/
+
 	if (answer == 'f')
 	{
 		if (cursorPosition == 0)
@@ -305,6 +321,10 @@ void MainMenuFunctions(int& cursorPosition, int& menuPosition, bool& menuWork, c
 
 void ColorChooseMenuFunctions(int& cursorPosition, int& menuPosition, char answer, int colorData[], int& tempColor, int tempColorIndex, bool& menuChanged)
 {
+	/*
+		is responsible for the functionality color choose menu
+	*/
+
 	if (answer == 'f')
 	{
 		if (cursorPosition >= 0 && cursorPosition <= 16)
@@ -325,6 +345,10 @@ void ColorChooseMenuFunctions(int& cursorPosition, int& menuPosition, char answe
 
 void DifficaltyChooseMenuFunctions(int& cursorPosition, int& menuPosition, char answer, int& difficalty, bool& menuChanged)
 {
+	/*
+		is responsible for the functionality difficulty choose menu
+	*/
+	
 	if (answer == 'f')
 	{
 		if (cursorPosition == 3)
@@ -351,6 +375,10 @@ void DifficaltyChooseMenuFunctions(int& cursorPosition, int& menuPosition, char 
 
 void WhoFirstMenuFunctions(int& cursorPosition, int& menuPosition, bool& menuWork, char answer, bool& menuChanged, bool& youFirstPlayer)
 {
+	/*
+		is responsible for the functionality who first menu
+	*/
+	
 	if (answer == 'f')
 	{
 		if (cursorPosition == 0)
@@ -380,6 +408,10 @@ void WhoFirstMenuFunctions(int& cursorPosition, int& menuPosition, bool& menuWor
 
 void OptionsMenuFunctions(int& cursorPosition, int& menuPosition, char answer, int& tempColorIndex, bool& menuChanged)
 {
+	/*
+		is responsible for the functionality options menu
+	*/
+	
 	if (answer == 'f')
 	{
 		if (cursorPosition == 4)
@@ -406,6 +438,10 @@ void OptionsMenuFunctions(int& cursorPosition, int& menuPosition, char answer, i
 
 void MakeStruct(Menu* menu, int colorData[], int difficalty, bool youFirstPlayer, bool playWithComputer, bool exitTrue)
 {
+	/*
+		this function make struct in order to send her in game
+	*/
+	
 	menu->exitTrue = exitTrue;
 	menu->playWithComputer = playWithComputer;
 	menu->difficulty = difficalty;

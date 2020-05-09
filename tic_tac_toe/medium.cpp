@@ -46,8 +46,8 @@ bool MaybeSomeoneWon(char** map, Cordinats& cordinats, char symbol, size_t remai
 
 	size_t size = 3;
 	size_t turn = 0;
-	char** newMap = CreateNewMap(size, size); // in order to secure the main array
-	char** turnMap = CreateNewMap(size, size);; // in order not to hit at one point
+	char** newMap = CreateNewMap(size); // in order to secure the main array
+	char** turnMap = CreateNewMap(size); // in order not to hit at one point
 
 
 	CopyMap(map, turnMap, size); // copy main map to turn map

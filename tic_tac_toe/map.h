@@ -1,5 +1,5 @@
 #pragma once
 
-char** CreateNewMap(int rows, int cols);
+char** CreateNewMap(size_t size);
 void CopyMap(char** map, char** newMap, size_t size);
 void DeleteMap(char** map, size_t size);
