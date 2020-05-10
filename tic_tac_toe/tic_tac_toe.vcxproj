@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="draw.cpp" />
+    <ClCompile Include="high.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="logic.cpp" />
     <ClCompile Include="low.cpp" />
@@ -149,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="draw.h" />
+    <ClInclude Include="high.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="logic.h" />
     <ClInclude Include="low.h" />
