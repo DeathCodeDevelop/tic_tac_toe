@@ -1,0 +1,7 @@
+﻿  main.cpp
+  Generating code
+  1 of 39 functions ( 2.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  tic_tac_toe.vcxproj -> A:\Source\tic_tac_toe\x64\Release\tic_tac_toe.exe

@@ -10,14 +10,21 @@
 using namespace std;
 
 Cordinats EnemyTurn(int difficulty, char** map, bool youFirstPlayer);
+int Game();
 
 int main()
+{
+	Game();
+	return 0;
+}
+
+int Game() 
 {
 	Menu menu = ShowMenu();
 
 	if (menu.exitTrue)
 		return 0;
-	
+
 	bool gameWork = true, crossTurn = true, noBodyWon = false;
 	Cursor cursor = { 0, 0 };
 	Cordinats cordinats;
@@ -77,7 +84,8 @@ int main()
 	else
 		cout << " o win!!!\n";
 
-	return 0;
+	system("pause");
+	Game();
 }
 
 Cordinats EnemyTurn(int difficulty, char** map, bool youFirstPlayer)
